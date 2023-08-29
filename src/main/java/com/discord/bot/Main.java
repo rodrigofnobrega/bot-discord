@@ -2,11 +2,8 @@ package com.discord.bot;
 
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
-import org.javacord.api.entity.channel.TextChannel;
+import org.javacord.api.entity.channel.ServerVoiceChannel;
 import org.javacord.api.entity.intent.Intent;
-import org.javacord.api.entity.message.MessageBuilder;
-import org.javacord.api.entity.message.component.ActionRow;
-import org.javacord.api.entity.message.component.Button;
 import org.javacord.api.interaction.*;
 
 
@@ -33,15 +30,30 @@ public class Main {
                         .setContent("Pong")
                         .respond();
             }
-
         });
+
+
 
         api.addMessageCreateListener(event -> {
             if (event.getMessageContent().equalsIgnoreCase("!ping")) {
                 event.getChannel().sendMessage("Pong!");
             }
 
-            if (event.getMessageContent().equalsIgnoreCase("/compo")) {
+            ServerVoiceChannel channel = event.getMessageAuthor()
+                    .getConnectedVoiceChannel()
+                    .get();
+
+            channel.connect().thenAccept(audioConnection -> {
+                // Do stuff
+            }).exceptionally(e -> {
+                // Failed to connect to voice channel (no permissions?)
+                e.printStackTrace();
+                return null;
+            });
+
+
+
+            /*if (event.getMessageContent().equalsIgnoreCase("/compo")) {
                 TextChannel channel = event.getChannel();
 
                 new MessageBuilder()
@@ -52,7 +64,7 @@ public class Main {
                                         Button.secondary("secondary", "Remind me after 5 minutes")))
                         .send(channel);
 
-            }
+            }*/
         });
 
 
