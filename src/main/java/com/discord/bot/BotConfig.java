@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class TokenBot {
+public class BotConfig {
     private Properties getProp() throws IOException {
         Properties props = new Properties();
         FileInputStream file = new FileInputStream(
