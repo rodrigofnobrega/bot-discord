@@ -37,7 +37,7 @@ public class PlayMusic {
         EmbedBuilder embed = new EmbedBuilder()
                 .setTitle("Music")
                 .setDescription(title)
-                .addField("Youtube link", youtubeLink)
+                .addField("Youtube Link", youtubeLink)
                 .addInlineField("Duration (Minutes)", time)
                 .setAuthor(messageCreateEvent.getMessageAuthor().getName(), "http://google.com/", messageCreateEvent.getMessageAuthor().getAvatar())
                 .setColor(Color.BLUE)
@@ -61,7 +61,7 @@ public class PlayMusic {
 
             System.out.println("Create audio source\n");
 
-            String music = "https://www.youtube.com/watch?v=gM5u_k9ps8Y";
+            String music = "";
 
             playerManager.loadItem(music, new AudioLoadResultHandler() {
                 @Override
