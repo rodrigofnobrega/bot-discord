@@ -17,3 +17,4 @@ public class BotConfig {
         return getProperties().getProperty("bot.token");
     }
 }
+

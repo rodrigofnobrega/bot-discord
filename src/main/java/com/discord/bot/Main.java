@@ -20,39 +20,6 @@ public class Main {
 
         voiceChannel.enterVoiceChannel();
 
-        /*SlashCommand slashCommand = SlashCommand.with("ping", "answer with pong")
-                .createGlobal(api)
-                .join();
-
-        api.addSlashCommandCreateListener(event -> {
-            SlashCommandInteraction slashCommandInteraction = event.getSlashCommandInteraction();
-
-            if (slashCommandInteraction.getCommandName().equals("ping")) {
-                slashCommandInteraction.createImmediateResponder()
-                        .setContent("Pong")
-                        .respond();
-            }
-        });
-
-        api.addMessageCreateListener(event -> {
-            if (event.getMessageContent().equalsIgnoreCase("!ping")) {
-                event.getChannel().sendMessage("Pong!");
-            }
-
-            if (event.getMessageContent().equalsIgnoreCase("/compo")) {
-                TextChannel textChannel = event.getChannel();
-
-                new MessageBuilder()
-                        .setContent("Click on one of these Buttons!")
-                        .addComponents(
-                                ActionRow.of(Button.success("success", "Send a message"),
-                                        Button.danger("danger", "Delete this message"),
-                                        Button.secondary("secondary", "Remind me after 5 minutes")))
-                        .send(textChannel);
-
-            }
-        });*/
-
         System.out.println("Bot is on");
     }
 
