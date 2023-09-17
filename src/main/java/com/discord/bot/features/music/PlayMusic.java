@@ -1,5 +1,6 @@
 package com.discord.bot.features.music;
 
+import com.discord.bot.utils.ConvertTime;
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
@@ -30,15 +31,8 @@ public class PlayMusic {
         this.messageCreateEvent = messageCreateEvent;
     }
 
-    private String convertMilissecondsToMinutes(long milisseconds) {
-        long seconds = ( milisseconds / 1000 ) % 60;
-        long minutes  = ( milisseconds / 60000 ) % 60;
-
-        return String.format("%d:%d", minutes, seconds);
-    }
-
     private EmbedBuilder createEmbed(String title, String thumbnailVideo, String youtubeLink, long timeVideo) {
-        String time = convertMilissecondsToMinutes(timeVideo);
+        String time = ConvertTime.convertMilissecondsToMinutes(timeVideo);
 
         EmbedBuilder embed = new EmbedBuilder()
                 .setTitle("Music")
@@ -67,7 +61,7 @@ public class PlayMusic {
 
             System.out.println("Create audio source\n");
 
-            String music = "";
+            String music = "https://www.youtube.com/watch?v=gM5u_k9ps8Y";
 
             playerManager.loadItem(music, new AudioLoadResultHandler() {
                 @Override
